@@ -38,3 +38,7 @@ next-env.d.ts
 # tmp files
 /tmp
 
+python_modules/
+python_modules/*
+*.pyc
+__pycache__/
