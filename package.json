@@ -1,0 +1,14 @@
+{
+  "name": "autolawyer-mcp",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "cd nextjs-app && npm run dev",
+    "build": "cd nextjs-app && npm run build",
+    "start": "cd nextjs-app && npm start",
+    "install:nextjs": "cd nextjs-app && npm install",
+    "install:python": "pip install -r requirements.txt"
+  },
+  "description": "AutoLawyer-MCP: Autonomous contract analysis with Next.js + Python"
+}
+

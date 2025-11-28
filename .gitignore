@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build
+dist/
+build/
+*.egg-info/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Storage
+autolawyer-mcp/storage/*.db
+autolawyer-mcp/storage/*.json
+autolawyer-mcp/storage/chroma/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
