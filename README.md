@@ -48,7 +48,6 @@ pip install -r requirements.txt
 
 ### 2. Environment Configuration
 
-Copy `.env.example` to `.env` and fill in your API keys:
 
 ```bash
 # OpenAI (default)
