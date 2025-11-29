@@ -12,6 +12,7 @@ env/
 # Environment
 .env
 .env.local
+.env*.local
 
 # IDE
 .vscode/
@@ -24,6 +25,15 @@ dist/
 build/
 *.egg-info/
 
+# Next.js
+nextjs-app/node_modules/
+nextjs-app/.next/
+nextjs-app/out/
+nextjs-app/.vercel
+nextjs-app/*.tsbuildinfo
+nextjs-app/next-env.d.ts
+nextjs-app/python_modules/
+
 # Frontend
 frontend/node_modules/
 frontend/dist/
@@ -33,9 +43,13 @@ frontend/.vite/
 autolawyer-mcp/storage/*.db
 autolawyer-mcp/storage/*.json
 autolawyer-mcp/storage/chroma/
+nextjs-app/tmp/
 
 # Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # OS
 .DS_Store

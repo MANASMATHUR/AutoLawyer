@@ -26,6 +26,11 @@ export default function DashboardPage() {
     formData.append('primary_docs', file);
     formData.append('instructions', 'Strict liability caps and mutual indemnification');
 
+    const useDeepAnalysis = (document.getElementById('deep-analysis') as HTMLInputElement)?.checked;
+    if (useDeepAnalysis) {
+      formData.append('deep_analysis', 'true');
+    }
+
     try {
       const res = await fetch('/api/cases', {
         method: 'POST',
@@ -98,6 +103,22 @@ export default function DashboardPage() {
                   <span>{file.name}</span>
                   <button onClick={() => setFile(null)} className="text-gray-400 hover:text-white ml-2">×</button>
                 </div>
+                <div className="flex items-center gap-2 mb-2">
+                  <input
+                    type="checkbox"
+                    id="deep-analysis"
+                    className="w-4 h-4 rounded border-gray-600 bg-gray-700 text-blue-600 focus:ring-blue-500 focus:ring-offset-gray-900"
+                    onChange={(e) => {
+                      // We'll handle this in the analyzeContract function by checking the element directly
+                      // or we could add state, but direct check is simpler for now if we don't need to track it elsewhere
+                    }}
+                  />
+                  <label htmlFor="deep-analysis" className="text-sm text-gray-300 select-none cursor-pointer flex items-center gap-1">
+                    Enable Deep Analysis (GPU)
+                    <span className="text-xs text-blue-400 bg-blue-500/10 px-1.5 py-0.5 rounded border border-blue-500/20">BETA</span>
+                  </label>
+                </div>
+
                 <button
                   onClick={analyzeContract}
                   disabled={isAnalyzing}
@@ -159,7 +180,7 @@ export default function DashboardPage() {
                   <div key={risk.clause_id} className="space-y-4">
                     <DiffViewer
                       original={result.clauses.find((c: any) => c.clause_id === risk.clause_id)?.text || ''}
-                      proposed={result.redlines.patches.find((p: any) => p.clause_id === risk.clause_id)?.patch || 'No changes proposed.'}
+                      proposed={result.redlines?.patches?.find((p: any) => p.clause_id === risk.clause_id)?.patch || 'No changes proposed.'}
                       rationale={risk.rationale}
                     />
 

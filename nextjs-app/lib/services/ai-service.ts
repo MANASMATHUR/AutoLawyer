@@ -137,6 +137,37 @@ Return a JSON object with:
     }
 
     /**
+     * Call the local Python backend for deep analysis (GPU-accelerated)
+     */
+    async analyzeWithPythonBackend(file: File, instructions: string): Promise<any> {
+        const formData = new FormData();
+        formData.append('primary_docs', file);
+        formData.append('instructions', instructions);
+
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 60000); // 60 second timeout
+
+            const response = await fetch('http://localhost:8000/api/cases', {
+                method: 'POST',
+                body: formData,
+                signal: controller.signal,
+            });
+
+            clearTimeout(timeoutId);
+
+            if (!response.ok) {
+                throw new Error(`Python backend error: ${response.statusText}`);
+            }
+
+            return await response.json();
+        } catch (error) {
+            console.error('Python backend connection failed:', error);
+            throw error;
+        }
+    }
+
+    /**
      * Get status of all providers
      */
     getProviderStatus() {
