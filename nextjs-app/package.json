@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "postinstall": "pip install -r autolawyer-mcp/requirements.txt -t python_modules --no-cache-dir --upgrade"
+    "lint": "next lint"
   },
   "dependencies": {
     "@types/diff": "^7.0.2",
